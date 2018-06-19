@@ -1,19 +1,39 @@
 package com.AyJK.gui;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.io.IOException;
 import com.AyJK.analyzer.*;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		JarFrame frame = new JarFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public static void main(String[] args) throws Exception {
+		//aqui la GUI de solo el grafo...
+        EventQueue.invokeLater(new Runnable() {
 
-		 //Analyzer analyzer = new Analyzer(frame.getPanelJar().getDirectory());
-		 //System.out.println(analyzer);
+            public void run() {
+                JFrame f = new JFrame("GraphPanel");
+                f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Draw gp = new Draw();
+                f.add(gp.control, BorderLayout.NORTH);
+                f.add(new JScrollPane(gp), BorderLayout.CENTER);
+                f.getRootPane().setDefaultButton(gp.control.defaultButton);
+                f.pack();
+                f.setLocationByPlatform(true);
+                f.setVisible(true);
+            }
+        });
+    
+		/////////////////////////////////////
+        //aqui esta la otra GUI
+		//JarFrame frame = new JarFrame();
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		//Analyzer analyzer = new Analyzer(frame.getPanelJar().getDirectory());
+		
 	}
 }
 
