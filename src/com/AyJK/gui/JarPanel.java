@@ -26,29 +26,25 @@ public class JarPanel extends JPanel {
     private ReadAL readAl;
 
     public JarPanel() {
-
-	JLabel text = new JLabel("Seleccione Jar por analizar");
-	add(text);
-	field = new JTextField(20);
-	add(field);
-	search = new JButton("BUSCAR");
-	read = new JButton("ANALIZAR");
-	Search searching = new Search();
-	this.readAl = new ReadAL(directory);
-	// ReadAL reading = new ReadAL();
-	search.addActionListener(searching);
-	read.addActionListener(readAl);
-	add(search);
-	add(read);
+    	JLabel text = new JLabel("Seleccione Jar por analizar");
+    	add(text);
+    	field = new JTextField(20);
+    	add(field);
+    	search = new JButton("BUSCAR");
+    	Search searching = new Search();
+    	search.addActionListener(searching);
+    	add(search);
+    	
+    	read = new JButton("ANALIZAR");
+    	add(read);
+    	
     }
 
+   
     private class Search implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-	    // TODO Auto-generated method stub
-	    System.out.println("buscando la mierda");
-	    // buscar el archivo
 	    JFileChooser selectorArchivos = new JFileChooser();
 	    selectorArchivos.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 	    int val = selectorArchivos.showOpenDialog(null);
@@ -56,24 +52,13 @@ public class JarPanel extends JPanel {
 	    if (val == JFileChooser.OPEN_DIALOG) {
 		String pathAbsoluto = selectorArchivos.getSelectedFile().getAbsolutePath();
 		directory = pathAbsoluto;
-		System.out.println(pathAbsoluto);
-		String directorioActual = selectorArchivos.getCurrentDirectory().getPath();
-		System.out.println(directorioActual);
-
-		/*
-		 * JOptionPane.showMessageDialog(null, "Directorio: " + pathAbsoluto+
-		 * "path: "+directorioActual);
-		 * 
-		 * boolean isArchivoRenombrado = selectorArchivos.getSelectedFile().renameTo(new
-		 * File(directorioActual + "\\text1.png"));//este ultimo puede ser una variable
-		 * y que la consultes por consola o con un dialogo.
-		 * 
-		 * if (isArchivoRenombrado){ JOptionPane.showMessageDialog(null,
-		 * "exito al renombrar archivo"); }
-		 * 
-		 * } else if (val == JFileChooser.CANCEL_OPTION) {
-		 * JOptionPane.showMessageDialog(null, "Proceso cancelado "); }
-		 */
+		directory = directory.replace("\\", "/");
+		field.setText(directory);
+		
+		readAl = new ReadAL(directory);
+		read.addActionListener(readAl);
+		
+		
 	    }
 	}
     }
@@ -81,4 +66,10 @@ public class JarPanel extends JPanel {
     public String getDirectory() {
 	return directory;
     }
+
+	public ReadAL getReadAl() {
+		return readAl;
+	}
+    
+
 }

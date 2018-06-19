@@ -15,13 +15,14 @@ public class JarFrame extends JFrame {
     private JarPanel panelJar;
 
     public JarFrame() {
-	setBounds(400, 300, 300, 150);
-	this.panelJar = new JarPanel();
-	add(panelJar);
-	setVisible(true);
+    	setBounds(400, 300, 300, 150);
+    	this.panelJar = new JarPanel();
+    	add(panelJar);
+    	setVisible(true);
     }
 
     public JarPanel getPanelJar() {
-	return panelJar;
+    	return panelJar;
     }
+
 }

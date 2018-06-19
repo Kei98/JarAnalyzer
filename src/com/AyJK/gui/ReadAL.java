@@ -16,20 +16,34 @@ import com.AyJK.analyzer.Analyzer;
 public class ReadAL implements ActionListener {
 
     private String route;
-
+    private Analyzer analyzer;
+    
     public ReadAL(String route) {
-	this.route = route;
+    	this.route = route;
     }
 
-    @SuppressWarnings("unused")
     @Override
     public void actionPerformed(ActionEvent arg0) {
 	try {
-	    Analyzer analyzer = new Analyzer(route);
+	    setAnalyzer(new Analyzer(route));
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
 	    e.printStackTrace();
 	}
-	System.out.println("enviar a read pos pa que lo lea");
+	
     }
+
+	/**
+	 * @return the analyzer
+	 */
+	public Analyzer getAnalyzer() {
+		return analyzer;
+	}
+
+	/**
+	 * @param analyzer the analyzer to set
+	 */
+	private void setAnalyzer(Analyzer analyzer) {
+		this.analyzer = analyzer;
+	}
+    
 }

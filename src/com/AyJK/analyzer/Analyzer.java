@@ -26,6 +26,7 @@ public class Analyzer {
 
     public Analyzer(String rute) throws IOException {
 	this.ruta = rute;
+	
 	@SuppressWarnings("resource")
 	ZipFile zipFile = new ZipFile(ruta);
 
@@ -64,7 +65,7 @@ public class Analyzer {
 	// *Muestra el html/
 	// System.out.println(html);
 
-	Pattern pDescript = Pattern.compile("<groupId>(.*?)</groupId>", Pattern.MULTILINE);
+	Pattern pDescript = Pattern.compile("<artifactId>(.*?)</artifactId>", Pattern.MULTILINE);
 	Matcher mDescrip = pDescript.matcher(html);
 
 	while (mDescrip.find()) {
