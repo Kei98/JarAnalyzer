@@ -5,30 +5,11 @@ import java.util.ArrayList;
 /**
  * 
  * @author AyJK
+
  *
  * @param <T>
  */
 
-/**
- * @author HP
- *
- * @param <T>
- */
-/**
- * @author HP
- *
- * @param <T>
- */
-/**
- * @author HP
- *
- * @param <T>
- */
-/**
- * @author HP
- *
- * @param <T>
- */
 public class Vertex<T extends Comparable<T>> {
 	
 	/**

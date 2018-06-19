@@ -47,6 +47,13 @@ public class Graph<T extends Comparable<T>> {
     	    {
     		this.vertex.put((T) v.getTag(), v);
     	    }
+    	
+    	for(int i = 0; i < vertex.size() -1; i++) {
+    		this.insertEdge(vertex.get(i), vertex.get(i+1));
+    		if(i+1 == vertex.size() -1) {
+    			this.insertEdge(vertex.get(i+1), vertex.get(0));
+    		}
+    	}
     }
     
     
@@ -177,6 +184,10 @@ public class Graph<T extends Comparable<T>> {
 			this.deleteEdge(vertex.getNeighbor(0));
 		}
 		return vertex;
+	}
+	
+	public void print() {
+		
 	}
 		
 	

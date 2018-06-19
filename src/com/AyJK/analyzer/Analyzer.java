@@ -1,7 +1,5 @@
-/**
- * 
- */
 package com.AyJK.analyzer;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +13,9 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.AyJK.structures.Graph;
+import com.AyJK.structures.Vertex;
+
 /**
  * @author AyJK
  *
@@ -22,8 +23,13 @@ import java.util.zip.ZipFile;
 public class Analyzer {
 
     private String ruta;
-    private ArrayList<String> list = new ArrayList<>();
-
+    @SuppressWarnings("rawtypes")
+	private ArrayList<Vertex> list = new ArrayList<>();
+    @SuppressWarnings("rawtypes")
+	private Vertex vertex;
+    @SuppressWarnings("rawtypes")
+	private Graph graph;
+    
     public Analyzer(String rute) throws IOException {
 	this.ruta = rute;
 	
@@ -70,7 +76,14 @@ public class Analyzer {
 
 	while (mDescrip.find()) {
 	    System.out.println(mDescrip.group(1));
-	    list.add(mDescrip.group(1));
+//	    list.add(mDescrip.group(1));
+	    this.vertex = new Vertex<String>(mDescrip.group(1));
+	    list.add(vertex);
 	}
+	graph = new Graph<>(list);
+	System.out.println("Grafo: ");
+	System.out.println(graph.vertexKeys());
+	System.out.println(graph.getEdge());
+	
     }
 }
