@@ -1,15 +1,16 @@
 package com.AyJK.gui;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -29,6 +30,7 @@ public class Main {
 }
 
 
+@SuppressWarnings("serial")
 class JarFrame extends JFrame{
 	
 	public JarFrame(){
@@ -44,6 +46,7 @@ class JarFrame extends JFrame{
 	
 }
 
+@SuppressWarnings("serial")
 class JarPanel extends JPanel{
 	
 	private JTextField field;
